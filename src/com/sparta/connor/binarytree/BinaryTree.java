@@ -76,33 +76,17 @@ public class BinaryTree implements BinaryTreeable{
         ArrayList<Integer> sortedList = new ArrayList<>();
         inOrderTraversal(rootNode, sortedList);
 
-        int[] sortedArray = new int[sortedList.size()];
-
-        for(int i = 0; i < sortedList.size(); i ++) {
-            sortedArray[i] = sortedList.get(i);
-        }
-
-        return sortedArray;
+        return listToArray(sortedList);
 
     }
-
-    private void inOrderTraversal(Node node, ArrayList<Integer> values) {
-
-        if(node == null) {
-            return;
-        }
-
-        inOrderTraversal(node.getLeftChild(), values);
-        values.add(node.getValue());
-        inOrderTraversal(node.getRightChild(), values);
-
-    }
-
 
     //TODO: implement
     @Override
     public int[] getSortedTreeDesc() {
-        return new int[0];
+        ArrayList<Integer> sortedList = new ArrayList<>();
+        inOrderTraversalRight(rootNode, sortedList);
+
+       return listToArray(sortedList);
     }
 
     //Recursive
@@ -140,5 +124,40 @@ public class BinaryTree implements BinaryTreeable{
             }
         }
         return null;
+    }
+
+    private void inOrderTraversal(Node node, ArrayList<Integer> values) {
+
+        if(node == null) {
+            return;
+        }
+
+        inOrderTraversal(node.getLeftChild(), values);
+        values.add(node.getValue());
+        inOrderTraversal(node.getRightChild(), values);
+
+    }
+
+    private void inOrderTraversalRight(Node node, ArrayList<Integer> values) {
+
+        if(node == null) {
+            return;
+        }
+
+        inOrderTraversal(node.getRightChild(), values);
+        values.add(node.getValue());
+        inOrderTraversal(node.getLeftChild(), values);
+
+    }
+
+    //TODO refactor for Single Dependency
+    private int[] listToArray(ArrayList<Integer> list) {
+        int[] array = new int[list.size()];
+
+        for(int i = 0; i < list.size(); i ++) {
+            array[i] = list.get(i);
+        }
+
+        return array;
     }
 }
