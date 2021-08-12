@@ -63,13 +63,10 @@ public class BinaryTreeTest {
     public void testGetLeftChildDoesThrowExceptionIfChildNodeDoesNotExist() {
         BinaryTree bt = new BinaryTree(7);
 
-        try {
-            bt.getLeftChild(7);
-        } catch (ChildNotFoundException e) {
-            e.printStackTrace();
-            Assertions.assertTrue(true);
-        }
-        Assertions.fail("ChildNotFoundExceptionWasNotThrown");
+        ChildNotFoundException thrown = Assertions.assertThrows(ChildNotFoundException.class,
+                () -> bt.getLeftChild(7), "Fail");
+
+        Assertions.assertTrue(thrown.getMessage().contains("Fail"));
     }
 
     @Test
@@ -216,7 +213,7 @@ public class BinaryTreeTest {
 
     @Test
     public void testBinaryTreeCanSortInAscendingOrderWhenGivenAnUnsortedArray() {
-        int[] array = {7, 10, 3, 5, 9, 2, 3, 4, 6, 1};
+        int[] array = {7, 10, 3, 5, 9, 2, 8, 4, 6, 1};
         BinaryTree bt = new BinaryTree(7);
 
         bt.addElements(array);
@@ -236,19 +233,19 @@ public class BinaryTreeTest {
         Assertions.assertEquals(
                 Arrays.toString(new int[]{20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10,
             9, 8, 7, 7, 6, 5, 4, 3, 2, 1}),
-                Arrays.toString(bt.getSortedTreeAsc()));
+                Arrays.toString(bt.getSortedTreeDesc()));
     }
 
     @Test
     public void testBinaryTreeCanSortInDescendingOrderWhenGivenAnUnsortedArray() {
-        int[] array = {7, 10, 3, 5, 9, 2, 3, 4, 6, 1};
+        int[] array = {7, 10, 3, 5, 9, 2, 8, 4, 6, 1};
         BinaryTree bt = new BinaryTree(7);
 
         bt.addElements(array);
 
         Assertions.assertEquals(
                 Arrays.toString(new int[]{10, 9, 8, 7, 7, 6, 5, 4, 3, 2, 1}),
-                Arrays.toString(bt.getSortedTreeAsc()));
+                Arrays.toString(bt.getSortedTreeDesc()));
     }
 
     @Test
@@ -267,7 +264,7 @@ public class BinaryTreeTest {
 
     @Test
     public void testBinaryTreeCanSortInAscendingOrderWhenGivenAnUnsortedArrayWithDefaultConstructor() {
-        int[] array = {7, 10, 3, 5, 9, 2, 3, 4, 6, 1};
+        int[] array = {7, 10, 3, 5, 9, 2, 8, 4, 6, 1};
         BinaryTree bt = new BinaryTree();
 
         bt.addElements(array);
@@ -287,19 +284,19 @@ public class BinaryTreeTest {
         Assertions.assertEquals(Arrays.toString(
                 new int[]{20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10,
                 9, 8, 7, 6, 5, 4, 3, 2, 1}),
-                Arrays.toString(bt.getSortedTreeAsc()));
+                Arrays.toString(bt.getSortedTreeDesc()));
     }
 
     @Test
     public void testBinaryTreeCanSortInDescendingOrderWhenGivenAnUnsortedArrayWithDefaultConstructor() {
-        int[] array = {7, 10, 3, 5, 9, 2, 3, 4, 6, 1};
+        int[] array = {7, 10, 3, 5, 9, 2, 8, 4, 6, 1};
         BinaryTree bt = new BinaryTree();
 
         bt.addElements(array);
 
         Assertions.assertEquals(
                 Arrays.toString(new int[]{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}),
-                Arrays.toString(bt.getSortedTreeAsc()));
+                Arrays.toString(bt.getSortedTreeDesc()));
     }
 
 }
