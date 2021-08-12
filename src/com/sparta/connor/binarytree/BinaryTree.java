@@ -6,11 +6,11 @@ import java.util.ArrayList;
 
 public class BinaryTree implements BinaryTreeable{
 
-    private final Node rootNode;
+    private Node rootNode;
 
-    public BinaryTree(final int number) {
-        this.rootNode = new Node(number);
-    }
+//    public BinaryTree(final int number) {
+//        this.rootNode = new Node(number);
+//    }
 
     @Override
     public int getRootElement() {
@@ -55,6 +55,10 @@ public class BinaryTree implements BinaryTreeable{
 
     @Override
     public void addElements(int[] elements) {
+
+        if(elements.length < 1)
+            return;
+
         for(int element : elements) {
             addElement(element);
         }
@@ -91,6 +95,11 @@ public class BinaryTree implements BinaryTreeable{
     //Recursive
     //code used to add an element is useful elsewhere
     private void addNodeToTree(Node node, int number) {
+        if(node == null) {
+            rootNode = new Node(number);
+            node = rootNode;
+        }
+
         if(number == node.getValue()) return;
 
         if(number <= node.getValue()) {
