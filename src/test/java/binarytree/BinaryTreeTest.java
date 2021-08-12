@@ -1,3 +1,5 @@
+package binarytree;
+
 import com.sparta.connor.binarytree.BinaryTree;
 import com.sparta.connor.exceptions.ChildNotFoundException;
 import org.junit.jupiter.api.Assertions;

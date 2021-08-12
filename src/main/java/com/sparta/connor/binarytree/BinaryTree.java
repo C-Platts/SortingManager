@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class BinaryTree implements BinaryTreeable{
 
-    private static Logger logger = Logger.getLogger("SortManager");
+    private static final Logger logger = Logger.getLogger("SortManager");
 
     private Node rootNode;
 
@@ -49,9 +49,10 @@ public class BinaryTree implements BinaryTreeable{
             child = node.getRightChild();
         }
 
-        if(child == null)
+        if(child == null) {
+            logger.error("Child not found");
             throw new ChildNotFoundException();
-        else
+        } else
             return child.getValue();
     }
 
@@ -109,10 +110,8 @@ public class BinaryTree implements BinaryTreeable{
     private void addNodeToTree(Node node, int number) {
         if(node == null) {
             rootNode = new Node(number);
-            node = rootNode;
+            return;
         }
-
-        if(number == node.getValue()) return;
 
         if(number <= node.getValue()) {
             if(node.isLeftChildEmpty()) {
