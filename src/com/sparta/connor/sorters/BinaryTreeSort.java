@@ -6,7 +6,7 @@ public class BinaryTreeSort implements Sorter{
     @Override
     public int[] sortArray(int[] arrayToSort) {
 
-        BinaryTree binaryTree = new BinaryTree(arrayToSort[0]);
+        BinaryTree binaryTree = new BinaryTree();
         //Beginning at 1 since element 0 is already the root of the tree
         binaryTree.addElements(arrayToSort);
 

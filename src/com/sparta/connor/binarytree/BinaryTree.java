@@ -1,15 +1,18 @@
 package com.sparta.connor.binarytree;
 
 import com.sparta.connor.exceptions.ChildNotFoundException;
+import com.sparta.connor.util.ListToArrayConverter;
 
 import java.util.ArrayList;
 
 public class BinaryTree implements BinaryTreeable{
 
-    private final Node rootNode;
+    private Node rootNode;
 
-    public BinaryTree(final int number) {
-        this.rootNode = new Node(number);
+    public BinaryTree() {}
+
+    public BinaryTree(int rootElement) {
+        this.rootNode = new Node(rootElement);
     }
 
     @Override
@@ -55,6 +58,10 @@ public class BinaryTree implements BinaryTreeable{
 
     @Override
     public void addElements(int[] elements) {
+
+        if(elements.length < 1)
+            return;
+
         for(int element : elements) {
             addElement(element);
         }
@@ -76,7 +83,7 @@ public class BinaryTree implements BinaryTreeable{
         ArrayList<Integer> sortedList = new ArrayList<>();
         inOrderTraversal(rootNode, sortedList, true);
 
-        return listToArray(sortedList);
+        return ListToArrayConverter.listToArray(sortedList);
 
     }
 
@@ -85,12 +92,17 @@ public class BinaryTree implements BinaryTreeable{
         ArrayList<Integer> sortedList = new ArrayList<>();
         inOrderTraversal(rootNode, sortedList, false);
 
-       return listToArray(sortedList);
+       return ListToArrayConverter.listToArray(sortedList);
     }
 
     //Recursive
     //code used to add an element is useful elsewhere
     private void addNodeToTree(Node node, int number) {
+        if(node == null) {
+            rootNode = new Node(number);
+            node = rootNode;
+        }
+
         if(number == node.getValue()) return;
 
         if(number <= node.getValue()) {
@@ -140,17 +152,5 @@ public class BinaryTree implements BinaryTreeable{
             values.add(node.getValue());
             inOrderTraversal(node.getLeftChild(), values, false);
         }
-    }
-
-
-    //TODO refactor for Single Dependency
-    private int[] listToArray(ArrayList<Integer> list) {
-        int[] array = new int[list.size()];
-
-        for(int i = 0; i < list.size(); i ++) {
-            array[i] = list.get(i);
-        }
-
-        return array;
     }
 }
