@@ -9,18 +9,18 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) {
-        Sorter bs = new BubbleSort();
-        int[] arrayToSort = {1, 13, 5, 2, 743, 9, 6, 31, 1, 9, 0, 34};
-
-        int[] sortedArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-
-
-        System.out.println(Arrays.toString(arrayToSort) + "\n");
-
-        System.out.println(Arrays.toString(bs.sortArray(arrayToSort)) + "\n");
+//        Sorter bs = new BubbleSort();
+//        int[] arrayToSort = {1, 13, 5, 2, 743, 9, 6, 31, 1, 9, 0, 34};
+//
+//        int[] sortedArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+//
+//
+//        System.out.println(Arrays.toString(arrayToSort) + "\n");
+//
+//        System.out.println(Arrays.toString(bs.sortArray(arrayToSort)) + "\n");
 
         //---------------------------------------------
-        BinaryTree binaryTree = new BinaryTree(7);
+        BinaryTree binaryTree = new BinaryTree();
 
         int[] elements = {2, 8, 9, 4, 2, 5, 6, 7, 12, 64, 6798 ,345 ,243, 36, 78, 569, 45};
 
@@ -31,8 +31,8 @@ public class Main {
         System.out.println(Arrays.toString(binaryTree.getSortedTreeAsc()));
 
         try {
-            System.out.println(binaryTree.getLeftChild(5));
-            System.out.println(binaryTree.getRightChild(5));
+            System.out.println(binaryTree.getLeftChild(6798));
+            System.out.println(binaryTree.getRightChild(64));
         } catch (ChildNotFoundException e) {
             e.printStackTrace();
         }

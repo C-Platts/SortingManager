@@ -1,15 +1,18 @@
 package com.sparta.connor.binarytree;
 
 import com.sparta.connor.exceptions.ChildNotFoundException;
+import com.sparta.connor.util.ListToArrayConverter;
 
 import java.util.ArrayList;
 
 public class BinaryTree implements BinaryTreeable{
 
-    private final Node rootNode;
+    private Node rootNode;
 
-    public BinaryTree(final int number) {
-        this.rootNode = new Node(number);
+    public BinaryTree() {}
+
+    public BinaryTree(int rootElement) {
+        this.rootNode = new Node(rootElement);
     }
 
     @Override
@@ -55,6 +58,10 @@ public class BinaryTree implements BinaryTreeable{
 
     @Override
     public void addElements(int[] elements) {
+
+        if(elements.length < 1)
+            return;
+
         for(int element : elements) {
             addElement(element);
         }
@@ -74,24 +81,28 @@ public class BinaryTree implements BinaryTreeable{
     public int[] getSortedTreeAsc() {
 
         ArrayList<Integer> sortedList = new ArrayList<>();
-        inOrderTraversal(rootNode, sortedList);
+        inOrderTraversal(rootNode, sortedList, true);
 
-        return listToArray(sortedList);
+        return ListToArrayConverter.listToArray(sortedList);
 
     }
 
-    //TODO: implement
     @Override
     public int[] getSortedTreeDesc() {
         ArrayList<Integer> sortedList = new ArrayList<>();
-        inOrderTraversalRight(rootNode, sortedList);
+        inOrderTraversal(rootNode, sortedList, false);
 
-       return listToArray(sortedList);
+       return ListToArrayConverter.listToArray(sortedList);
     }
 
     //Recursive
     //code used to add an element is useful elsewhere
     private void addNodeToTree(Node node, int number) {
+        if(node == null) {
+            rootNode = new Node(number);
+            node = rootNode;
+        }
+
         if(number == node.getValue()) return;
 
         if(number <= node.getValue()) {
@@ -126,38 +137,20 @@ public class BinaryTree implements BinaryTreeable{
         return null;
     }
 
-    private void inOrderTraversal(Node node, ArrayList<Integer> values) {
+    private void inOrderTraversal(Node node, ArrayList<Integer> values, boolean left) {
 
         if(node == null) {
             return;
         }
 
-        inOrderTraversal(node.getLeftChild(), values);
-        values.add(node.getValue());
-        inOrderTraversal(node.getRightChild(), values);
-
-    }
-
-    private void inOrderTraversalRight(Node node, ArrayList<Integer> values) {
-
-        if(node == null) {
-            return;
+        if(left) {
+            inOrderTraversal(node.getLeftChild(), values, true);
+            values.add(node.getValue());
+            inOrderTraversal(node.getRightChild(), values, true);
+        } else {
+            inOrderTraversal(node.getRightChild(), values, false);
+            values.add(node.getValue());
+            inOrderTraversal(node.getLeftChild(), values, false);
         }
-
-        inOrderTraversal(node.getRightChild(), values);
-        values.add(node.getValue());
-        inOrderTraversal(node.getLeftChild(), values);
-
-    }
-
-    //TODO refactor for Single Dependency
-    private int[] listToArray(ArrayList<Integer> list) {
-        int[] array = new int[list.size()];
-
-        for(int i = 0; i < list.size(); i ++) {
-            array[i] = list.get(i);
-        }
-
-        return array;
     }
 }
