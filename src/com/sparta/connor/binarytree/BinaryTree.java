@@ -1,6 +1,7 @@
 package com.sparta.connor.binarytree;
 
 import com.sparta.connor.exceptions.ChildNotFoundException;
+import com.sparta.connor.util.ListToArrayConverter;
 
 import java.util.ArrayList;
 
@@ -80,7 +81,7 @@ public class BinaryTree implements BinaryTreeable{
         ArrayList<Integer> sortedList = new ArrayList<>();
         inOrderTraversal(rootNode, sortedList, true);
 
-        return listToArray(sortedList);
+        return ListToArrayConverter.listToArray(sortedList);
 
     }
 
@@ -89,7 +90,7 @@ public class BinaryTree implements BinaryTreeable{
         ArrayList<Integer> sortedList = new ArrayList<>();
         inOrderTraversal(rootNode, sortedList, false);
 
-       return listToArray(sortedList);
+       return ListToArrayConverter.listToArray(sortedList);
     }
 
     //Recursive
@@ -149,17 +150,5 @@ public class BinaryTree implements BinaryTreeable{
             values.add(node.getValue());
             inOrderTraversal(node.getLeftChild(), values, false);
         }
-    }
-
-
-    //TODO refactor for Single Dependency
-    private int[] listToArray(ArrayList<Integer> list) {
-        int[] array = new int[list.size()];
-
-        for(int i = 0; i < list.size(); i ++) {
-            array[i] = list.get(i);
-        }
-
-        return array;
     }
 }
