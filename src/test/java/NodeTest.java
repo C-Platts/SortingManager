@@ -10,7 +10,7 @@ public class NodeTest {
     public void testConstructorInitialisesValue() {
         Node testNode = new Node(7);
 
-        Assertions.assertEquals(testNode.getValue(), 7);
+        Assertions.assertEquals(7, testNode.getValue());
     }
 
 
@@ -22,7 +22,7 @@ public class NodeTest {
 
         testNode.setLeftChild(testNodeLeftChild);
 
-        Assertions.assertEquals(testNode.getLeftChild(), testNodeLeftChild);
+        Assertions.assertEquals(testNodeLeftChild, testNode.getLeftChild());
     }
 
     //tests setLeftChild() and getLeftChild() for null values
@@ -39,9 +39,9 @@ public class NodeTest {
         Node testNode = new Node(7);
         Node testNodeRightChild = new Node(4);
 
-        testNode.setLeftChild(testNodeRightChild);
+        testNode.setRightChild(testNodeRightChild);
 
-        Assertions.assertEquals(testNode.getRightChild(), testNodeRightChild);
+        Assertions.assertEquals(testNodeRightChild, testNode.getRightChild());
     }
 
     //tests setRightChild() and getRightChild() for null values
@@ -56,39 +56,39 @@ public class NodeTest {
 
     //tests isLeftChildEmpty() and setLeftChild()
     @Test
-    public void testIsLeftChildEmptyReturnsTrue() {
+    public void testIsLeftChildEmptyReturnsFalse() {
         Node testNode = new Node(7);
         Node testNodeLeftChild = new Node(4);
 
         testNode.setLeftChild(testNodeLeftChild);
 
-        Assertions.assertTrue(testNode.isLeftChildEmpty());
+        Assertions.assertFalse(testNode.isLeftChildEmpty());
     }
 
     //tests isLeftChildEmpty() and setLeftChild()
     @Test
-    public void testIsLeftChildEmptyReturnsFalse() {
+    public void testIsLeftChildEmptyReturnsTrue() {
         Node testNode = new Node(7);
 
-        Assertions.assertFalse(testNode.isLeftChildEmpty());
-    }
-
-    @Test
-    public void testIsRightChildEmptyReturnsTrue() {
-        Node testNode = new Node(7);
-        Node testNodeRightChild = new Node(4);
-
-        testNode.setRightChild(testNodeRightChild);
-
-        Assertions.assertTrue(testNode.isRightChildEmpty());
+        Assertions.assertTrue(testNode.isLeftChildEmpty());
     }
 
     @Test
     public void testIsRightChildEmptyReturnsFalse() {
         Node testNode = new Node(7);
+        Node testNodeRightChild = new Node(4);
 
+        testNode.setRightChild(testNodeRightChild);
 
         Assertions.assertFalse(testNode.isRightChildEmpty());
+    }
+
+    @Test
+    public void testIsRightChildEmptyReturnsTrue() {
+        Node testNode = new Node(7);
+
+
+        Assertions.assertTrue(testNode.isRightChildEmpty());
     }
 
 
