@@ -9,9 +9,11 @@ public class BinaryTree implements BinaryTreeable{
 
     private Node rootNode;
 
-//    public BinaryTree(final int number) {
-//        this.rootNode = new Node(number);
-//    }
+    public BinaryTree() {}
+
+    public BinaryTree(int rootElement) {
+        this.rootNode = new Node(rootElement);
+    }
 
     @Override
     public int getRootElement() {
