@@ -25,13 +25,13 @@ public class SorterTest {
         //sorter = SorterFactory.getSorter(3);
 
         //QuickSort
-        //sorter = SorterFactory.getSorter(4);
+        sorter = SorterFactory.getSorter(4);
 
         //InsertionSort
         //sorter = SorterFactory.getSorter(5);
 
         //SelectionSort
-        sorter = SorterFactory.getSorter(6);
+        //sorter = SorterFactory.getSorter(6);
 
     }
 
