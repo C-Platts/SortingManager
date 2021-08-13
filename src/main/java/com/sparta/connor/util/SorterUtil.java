@@ -2,7 +2,7 @@ package com.sparta.connor.util;
 
 import java.util.ArrayList;
 
-public class ListToArrayConverter {
+public class SorterUtil {
 
     public static int[] listToArray(ArrayList<Integer> list) {
 
@@ -14,6 +14,14 @@ public class ListToArrayConverter {
 
         return array;
 
+    }
+
+    public static int[] swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+
+        return arr;
     }
 
 }

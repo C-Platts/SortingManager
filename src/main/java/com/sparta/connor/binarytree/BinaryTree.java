@@ -1,7 +1,7 @@
 package com.sparta.connor.binarytree;
 
 import com.sparta.connor.exceptions.ChildNotFoundException;
-import com.sparta.connor.util.ListToArrayConverter;
+import com.sparta.connor.util.SorterUtil;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
@@ -93,7 +93,7 @@ public class BinaryTree implements BinaryTreeable{
         ArrayList<Integer> sortedList = new ArrayList<>();
         inOrderTraversal(rootNode, sortedList, true);
 
-        return ListToArrayConverter.listToArray(sortedList);
+        return SorterUtil.listToArray(sortedList);
 
     }
 
@@ -102,7 +102,7 @@ public class BinaryTree implements BinaryTreeable{
         ArrayList<Integer> sortedList = new ArrayList<>();
         inOrderTraversal(rootNode, sortedList, false);
 
-       return ListToArrayConverter.listToArray(sortedList);
+       return SorterUtil.listToArray(sortedList);
     }
 
     //Recursive

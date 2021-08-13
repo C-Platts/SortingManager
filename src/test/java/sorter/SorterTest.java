@@ -52,7 +52,7 @@ public class SorterTest {
 
     @Test
     public void SortDetectsAnEmptyArray() {
-        int [] emptyArray = new int[14];
+        int [] emptyArray = new int[0];
 
         Assertions.assertEquals(
                 Arrays.toString(emptyArray),
@@ -63,11 +63,11 @@ public class SorterTest {
 
     @Test
     public void SortDetectsAnArrayWithOneValue() {
-        int [] emptyArray = {1};
+        int [] singleElement = {1};
 
         Assertions.assertEquals(
-                Arrays.toString(emptyArray),
-                Arrays.toString(sorter.sortArray(emptyArray))
+                Arrays.toString(singleElement),
+                Arrays.toString(sorter.sortArray(singleElement))
         );
 
     }
