@@ -58,21 +58,22 @@ public class MergeSort implements Sorter{
         }
 
         //Left or right might still have elements in them - need to append
-        if(i < left.length - 1) {
+        if(i < left.length) {
             //Pass in the index to continue from where the above algorithm left off
-            consumearray(left, mergeArray, i);
-        } else if(j < right.length - 1) {
-            consumearray(right, mergeArray, j);
+            consumearray(left, mergeArray, i, k);
+        } else if(j < right.length) {
+            consumearray(right, mergeArray, j, k);
         }
 
         return mergeArray;
 
     }
 
-    private int[] consumearray(int[] array, int[] mergeArray, int i) {
+    private int[] consumearray(int[] array, int[] mergeArray, int i, int k) {
         //Copy elements from array to mergeArray
         for(int j = i; j < array.length; j ++) {
-            mergeArray[j] = array[j];
+            mergeArray[k] = array[j];
+            k++;
         }
         return mergeArray;
     }
