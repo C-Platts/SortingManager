@@ -1,5 +1,7 @@
 package com.sparta.connor.display;
 
+import com.sparta.connor.sorters.Sorter;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -20,12 +22,16 @@ public class DisplayManager {
         System.out.println("Please enter an integer length for an array you would like to sort:");
     }
 
-    public void outputArray(int[] array) {
-        System.out.println(Arrays.toString(array));
+    public void outputPreSortedArray(int[] array) {
+        System.out.println("Randomly generated array: " + Arrays.toString(array));
+    }
+
+    public void outputPostSortedArray(int[] array, Sorter sorter) {
+        System.out.println("Sorted by " + sorter.getClass().getSimpleName() + ": " + Arrays.toString(array));
     }
 
     public void outputTimeTaken(double time) {
-        System.out.println(time);
+        System.out.println("Completed in: " + time + " milliseconds");
     }
 
     public void printSortSelection() {

@@ -21,18 +21,29 @@ public class SortManager {
         int length = inputManager.getUserInput();
         int[] array = arrayGenerator.generate(length);
 
-        displayManager.outputArray(array);
+        displayManager.outputPreSortedArray(array);
 
         //output name of sorting algorithm
 
+
+
         //begin timer
         double start = System.nanoTime();
-        array = sorter.sortArray(array);
+
+        try {
+            array = sorter.sortArray(array);
+        } catch (NullPointerException n) {
+            n.printStackTrace();
+            System.exit(1);
+        }
+
         //stop timer
         double end = System.nanoTime();
 
-        displayManager.outputArray(array);
-        displayManager.outputTimeTaken(end - start);
+        displayManager.outputPostSortedArray(array, sorter);
+
+        //From nanoseconds to milliseconds
+        displayManager.outputTimeTaken((end - start) / 100);
 
 
 
