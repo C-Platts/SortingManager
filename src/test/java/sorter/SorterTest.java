@@ -8,10 +8,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.logging.Logger;
 
 public class SorterTest {
 
     private static Sorter sorter;
+    private static Logger logger = Logger.getLogger("SortManager");
 
     @BeforeAll
     static void setupFactory() {
@@ -19,13 +21,13 @@ public class SorterTest {
         //sorter = SorterFactory.getSorter(1);
 
         //MergeSort
-       //sorter = SorterFactory.getSorter(2);
+       sorter = SorterFactory.getSorter(2);
 
         //BinaryTreeSort
         //sorter = SorterFactory.getSorter(3);
 
         //QuickSort
-        sorter = SorterFactory.getSorter(4);
+        //sorter = SorterFactory.getSorter(4);
 
         //InsertionSort
         //sorter = SorterFactory.getSorter(5);
@@ -54,6 +56,9 @@ public class SorterTest {
                 Arrays.toString( new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}),
                 Arrays.toString(sorter.sortArray(array))
         );
+
+        logger.info(Arrays.toString( new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}));
+        logger.info(Arrays.toString(sorter.sortArray(array)));
     }
 
     @Test
