@@ -27,6 +27,9 @@ public class SorterTest {
         //QuickSort
         sorter = SorterFactory.getSorter(4);
 
+        //InsertionSort
+        sorter = SorterFactory.getSorter(5);
+
     }
 
     @Test

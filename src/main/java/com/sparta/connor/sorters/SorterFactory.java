@@ -13,6 +13,8 @@ public class SorterFactory {
                 return new BinaryTreeSort();
             case 4:
                 return new QuickSort();
+            case 5:
+                return new InsertionSort();
             default:
                 return null;
         }
