@@ -20,7 +20,7 @@ public class MergeSort implements Sorter{
             return arr;
 
         int[] left = new int[arr.length/2];
-        int[] right = new int[arr.length/2];
+        int[] right = new int[arr.length - left.length];
 
         for(int i = 0; i < left.length; i++) {
             left[i] = arr[i];
