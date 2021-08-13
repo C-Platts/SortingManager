@@ -19,10 +19,10 @@ public class SorterTest {
         //sorter = SorterFactory.getSorter(1);
 
         //MergeSort
-       sorter = SorterFactory.getSorter(2);
+       //sorter = SorterFactory.getSorter(2);
 
         //BinaryTreeSort
-        //sorter = SorterFactory.getSorter(3);
+        sorter = SorterFactory.getSorter(3);
 
     }
 

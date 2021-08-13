@@ -10,6 +10,6 @@ public class BinaryTreeSort implements Sorter{
         //Beginning at 1 since element 0 is already the root of the tree
         binaryTree.addElements(arrayToSort);
 
-        return new int[0];
+        return binaryTree.getSortedTreeAsc();
     }
 }
