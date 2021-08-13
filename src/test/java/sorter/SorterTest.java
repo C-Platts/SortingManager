@@ -22,10 +22,10 @@ public class SorterTest {
        //sorter = SorterFactory.getSorter(2);
 
         //BinaryTreeSort
-        sorter = SorterFactory.getSorter(3);
+        //sorter = SorterFactory.getSorter(3);
 
         //QuickSort
-        sorter = SorterFactory.getSorter(4);
+        //sorter = SorterFactory.getSorter(4);
 
         //InsertionSort
         sorter = SorterFactory.getSorter(5);
