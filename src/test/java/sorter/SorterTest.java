@@ -1,7 +1,10 @@
 package sorter;
 
 import com.sparta.connor.sorters.MergeSort;
+import com.sparta.connor.sorters.Sorter;
+import com.sparta.connor.sorters.SorterFactory;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -9,15 +12,28 @@ import java.util.Arrays;
 //TODO: Change to use Sort factory
 public class SorterTest {
 
+    Sorter sorter;
+
+    @BeforeEach
+    public void setupFactory() {
+        //BubbleSort
+        sorter = SorterFactory.getSorter(1);
+
+        //MergeSort
+       //sorter = SorterFactory.getSorter(2);
+
+        //BinaryTreeSort
+        //sorter = SorterFactory.getSorter(3);
+
+    }
+
     @Test
     public void SortDoesNotChangeASortedArray() {
         int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
-        MergeSort mergeSort = new MergeSort();
-
         Assertions.assertEquals(
                 Arrays.toString(array),
-                Arrays.toString(mergeSort.sortArray(array))
+                Arrays.toString(sorter.sortArray(array))
         );
 
     }
@@ -30,7 +46,7 @@ public class SorterTest {
 
         Assertions.assertEquals(
                 Arrays.toString( new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}),
-                Arrays.toString(mergeSort.sortArray(array))
+                Arrays.toString(sorter.sortArray(array))
         );
     }
 
@@ -42,7 +58,7 @@ public class SorterTest {
 
         Assertions.assertEquals(
                 Arrays.toString(emptyArray),
-                Arrays.toString(mergesort.sortArray(emptyArray))
+                Arrays.toString(sorter.sortArray(emptyArray))
         );
 
     }
@@ -55,7 +71,7 @@ public class SorterTest {
 
         Assertions.assertEquals(
                 Arrays.toString(emptyArray),
-                Arrays.toString(mergesort.sortArray(emptyArray))
+                Arrays.toString(sorter.sortArray(emptyArray))
         );
 
     }
