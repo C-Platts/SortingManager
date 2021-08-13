@@ -24,6 +24,9 @@ public class SorterTest {
         //BinaryTreeSort
         sorter = SorterFactory.getSorter(3);
 
+        //QuickSort
+        sorter = SorterFactory.getSorter(4);
+
     }
 
     @Test
