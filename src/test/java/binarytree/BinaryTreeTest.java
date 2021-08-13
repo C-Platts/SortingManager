@@ -51,22 +51,18 @@ public class BinaryTreeTest {
         bt.addElement(4);
 
         try {
-            bt.getLeftChild(7);
-        } catch (ChildNotFoundException e) {
+            Assertions.assertEquals(4, bt.getLeftChild(7));
+        } catch (ChildNotFoundException e){
             e.printStackTrace();
-            Assertions.fail("ChildNotFoundExceptionWasThrown");
+            Assertions.fail();
         }
-        Assertions.assertTrue(true);
     }
 
     @Test
     public void testGetLeftChildDoesThrowExceptionIfChildNodeDoesNotExist() {
         BinaryTree bt = new BinaryTree(7);
 
-        ChildNotFoundException thrown = Assertions.assertThrows(ChildNotFoundException.class,
-                () -> bt.getLeftChild(7), "Fail");
-
-        Assertions.assertTrue(thrown.getMessage().contains("Fail"));
+        Assertions.assertThrows(ChildNotFoundException.class, () -> bt.getLeftChild(7), "Child not found");
     }
 
     @Test
@@ -76,25 +72,18 @@ public class BinaryTreeTest {
         bt.addElement(19);
 
         try {
-            bt.getRightChild(7);
-        } catch (ChildNotFoundException e) {
+            Assertions.assertEquals(19, bt.getRightChild(7));
+        } catch (ChildNotFoundException e){
             e.printStackTrace();
-            Assertions.fail("ChildNotFoundExceptionWasThrown");
+            Assertions.fail();
         }
-        Assertions.assertTrue(true);
     }
 
     @Test
     public void testGetRightChildDoesThrowExceptionIfChildNodeDoesNotExist() {
         BinaryTree bt = new BinaryTree(7);
 
-        try {
-            bt.getRightChild(7);
-        } catch (ChildNotFoundException e) {
-            e.printStackTrace();
-            Assertions.assertTrue(true);
-        }
-        Assertions.fail("ChildNotFoundExceptionWasThrown");
+        Assertions.assertThrows(ChildNotFoundException.class, () -> bt.getRightChild(7), "Child not found");
 
     }
 
@@ -104,13 +93,7 @@ public class BinaryTreeTest {
 
         bt.addElement(7);
 
-        try {
-            bt.getRightChild(7);
-        } catch (ChildNotFoundException e) {
-            e.printStackTrace();
-            Assertions.assertTrue(true);
-        }
-        Assertions.fail("Duplicate value was put to the right");
+        Assertions.assertThrows(ChildNotFoundException.class, () -> bt.getRightChild(7), "Child not found");
     }
 
     @Test
@@ -120,12 +103,11 @@ public class BinaryTreeTest {
         bt.addElement(7);
 
         try {
-            bt.getLeftChild(7);
-        } catch (ChildNotFoundException e) {
+            Assertions.assertEquals(7, bt.getLeftChild(7));
+        } catch (ChildNotFoundException e){
             e.printStackTrace();
-            Assertions.fail("Duplicate value was not put to the left");
+            Assertions.fail();
         }
-        Assertions.assertTrue(true);
     }
 
     @Test

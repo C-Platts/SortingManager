@@ -51,7 +51,7 @@ public class BinaryTree implements BinaryTreeable{
 
         if(child == null) {
             logger.error("Child not found");
-            throw new ChildNotFoundException();
+            throw new ChildNotFoundException("Child not found");
         } else
             return child.getValue();
     }
