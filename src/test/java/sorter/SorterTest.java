@@ -28,7 +28,10 @@ public class SorterTest {
         //sorter = SorterFactory.getSorter(4);
 
         //InsertionSort
-        sorter = SorterFactory.getSorter(5);
+        //sorter = SorterFactory.getSorter(5);
+
+        //SelectionSort
+        sorter = SorterFactory.getSorter(6);
 
     }
 

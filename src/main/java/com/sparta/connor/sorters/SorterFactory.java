@@ -15,6 +15,8 @@ public class SorterFactory {
                 return new QuickSort();
             case 5:
                 return new InsertionSort();
+            case 6:
+                return new SelectionSort();
             default:
                 return null;
         }
