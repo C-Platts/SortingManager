@@ -19,40 +19,34 @@ public class ArrayGeneratorTest {
     public void testArrayIsGenerated() {
         int length = 5;
 
-        Assertions.assertFalse(generator.generate(length).length == 0);
+        Assertions.assertNotEquals(0, generator.generate(length).length);
     }
 
     @Test
     public void testArrayGeneratedIsOfLefgthSpecified() {
         int length = 5;
 
-        Assertions.assertTrue(generator.generate(length).length == 5);
+        Assertions.assertEquals(5, generator.generate(length).length);
     }
 
     @Test
     public void testSingleLengthArrayCanBeGenerated() {
         int length = 1;
 
-        Assertions.assertTrue(generator.generate(length).length == 1);
+        Assertions.assertEquals(1, generator.generate(length).length);
     }
 
     @Test
     public void testZeroLengthArrayCannotBeGenerated() {
         int length = 0;
-        Assertions.assertTrue(generator.generate(length).length == 1);
+        Assertions.assertEquals(1, generator.generate(length).length);
     }
 
     @Test
     public void testArrayElementsAreNotEmpty() {
-        int length = 5;
+        int length = 458724597;
         for(int number : generator.generate(length)) {
-            Assertions.assertFalse(number == 0);
+            Assertions.assertNotEquals(0, number);
         }
-    }
-
-    @Test
-    public coid testArrayOfAbsurdlyLargeSizeCanBenMade() {
-        int length = Integer.MAX_VALUE;
-        Assertions.assertTrue(generator.generate(length).length == length);
     }
 }
