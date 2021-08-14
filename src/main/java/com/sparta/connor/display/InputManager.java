@@ -5,20 +5,67 @@ import java.util.Scanner;
 
 public class InputManager {
 
-    Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
+    private int input;
 
     public int getUserInput() {
 
-        int input = -1;
-        boolean exit = false;
+        input = -1;
 
         try {
-            input = scanner.nextInt();
+
+            if(isInputValidType())
+                input = scanner.nextInt();
         } catch (InputMismatchException i) {
             i.printStackTrace();
         }
+        scanner.nextLine();
 
        return input;
+    }
+
+    private boolean isInputValidType() {
+        return scanner.hasNextInt();
+    }
+
+    private boolean isSortSelectionValid(int input) {
+        if(input >= 1 && input  <= 6) {
+          return true;
+        }
+        return false;
+
+    }
+
+    public int getSortSelection() {
+        input = -1;
+
+        do {
+
+            input = getUserInput();
+
+        } while(!isSortSelectionValid(input));
+
+        return input;
+    }
+
+    public int getArraySelection() {
+        input= -1;
+
+        do {
+
+            input = getUserInput();
+
+        } while(!isArraySelectionValid(input));
+
+        return input;
+
+    }
+
+    private boolean isArraySelectionValid(int input) {
+        if(input >= 1) {
+            return true;
+        }
+        return false;
     }
 
 }

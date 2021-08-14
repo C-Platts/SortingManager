@@ -12,20 +12,18 @@ public class SortManager {
     InputManager inputManager = new InputManager();
     ArrayGenerator arrayGenerator = new ArrayGenerator();
 
+
+
     public void load() {
 
         displayManager.printGreeting();
-        Sorter sorter = SorterFactory.getSorter(inputManager.getUserInput());
-        displayManager.printArraySelection();
+        Sorter sorter = SorterFactory.getSorter(inputManager.getSortSelection());
 
-        int length = inputManager.getUserInput();
-        int[] array = arrayGenerator.generate(length);
+
+        displayManager.printArraySelection();
+        int[] array = arrayGenerator.generate(inputManager.getArraySelection());
 
         displayManager.outputPreSortedArray(array);
-
-        //output name of sorting algorithm
-
-
 
         //begin timer
         double start = System.nanoTime();
@@ -45,8 +43,5 @@ public class SortManager {
         //From nanoseconds to milliseconds
         displayManager.outputTimeTaken((end - start) / 100);
 
-
-
     }
-
 }

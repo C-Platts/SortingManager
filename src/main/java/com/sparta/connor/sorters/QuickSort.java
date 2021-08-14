@@ -44,21 +44,17 @@ public class QuickSort implements Sorter{
             if(arrayToSort[j] < pivot) {
 
                 i ++;
-                logger.info("Before swap: " + Arrays.toString(arrayToSort));
 
                 temp = arrayToSort[i];
                 arrayToSort[i] = arrayToSort[j];
                 arrayToSort[j] = temp;
 
-                logger.info("After swap: " + Arrays.toString(arrayToSort));
             }
         }
 
-        logger.info("Before swap: " + Arrays.toString(arrayToSort));
         temp = arrayToSort[i + 1];
         arrayToSort[i + 1] = arrayToSort[high];
         arrayToSort[high] = temp;
-        logger.info("After swap: " + Arrays.toString(arrayToSort));
 
         return (i + 1);
     }
