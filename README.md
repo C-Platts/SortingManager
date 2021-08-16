@@ -12,17 +12,14 @@ The program features six sorting algorithms:
  
  Each sort has been added to a SortFactory, following the Factory pattern. 
 
-## TDD
-This project adopted TDD partway through, where unit tests were written before classes were implemented. Following Red-Green-Refactor, tests were written and failed before any 
-code was written, and only the bare minimum amount of code was written to pass the tests.
+## How to use
+To use the program, clone it into a maven project.
 
-Tests were written for the sorting algorithms and binary tree class. Some basic performance testing was done additionally.
+When run, enter 1-6 to select a sorting algorithm at the first prompt. At the second prompt enter a non-zero, positive integer value to select the size of the array to be generated.
 
-The testing was used in conjunction with the SortFactory, which allowed the test cases to be reused for each sort algorithm implementation.
+The program will generate an array of the specified length and populate it with random integers between 1 and the length of the array. 
 
-## Binary Tree
-The binary tree sort uses a binary tree structure that was implemented following a given interface contract. A separate Node class was implemented for use within the binary tree class, to adhere to SOLID principles.
+The program will then return the generated array, the sorted array and the time in milliseconds it took for the sorting algorithm to sort the array. The program will then terminate and will need to be run again to try a different algorithm.
 
 ## Maven
 The project was converted to Maven from a standard Java project part-way through, with dependencies for JUnit 5 and log4j added for testing and logging.
-
