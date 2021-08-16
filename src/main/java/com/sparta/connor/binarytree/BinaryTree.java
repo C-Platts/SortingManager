@@ -1,11 +1,14 @@
 package com.sparta.connor.binarytree;
 
 import com.sparta.connor.exceptions.ChildNotFoundException;
-import com.sparta.connor.util.ListToArrayConverter;
+import com.sparta.connor.util.SorterUtil;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 
 public class BinaryTree implements BinaryTreeable{
+
+    private static final Logger logger = Logger.getLogger("SortManager");
 
     private Node rootNode;
 
@@ -17,6 +20,12 @@ public class BinaryTree implements BinaryTreeable{
 
     @Override
     public int getRootElement() {
+        if(rootNode == null) {
+            logger.error("Root node not initialised");
+            return Integer.MIN_VALUE;
+        }
+
+
         return rootNode.getValue();
     }
 
@@ -40,9 +49,10 @@ public class BinaryTree implements BinaryTreeable{
             child = node.getRightChild();
         }
 
-        if(child == null)
-            throw new ChildNotFoundException();
-        else
+        if(child == null) {
+            logger.error("Child not found");
+            throw new ChildNotFoundException("Child not found");
+        } else
             return child.getValue();
     }
 
@@ -83,7 +93,7 @@ public class BinaryTree implements BinaryTreeable{
         ArrayList<Integer> sortedList = new ArrayList<>();
         inOrderTraversal(rootNode, sortedList, true);
 
-        return ListToArrayConverter.listToArray(sortedList);
+        return SorterUtil.listToArray(sortedList);
 
     }
 
@@ -92,7 +102,7 @@ public class BinaryTree implements BinaryTreeable{
         ArrayList<Integer> sortedList = new ArrayList<>();
         inOrderTraversal(rootNode, sortedList, false);
 
-       return ListToArrayConverter.listToArray(sortedList);
+       return SorterUtil.listToArray(sortedList);
     }
 
     //Recursive
@@ -100,10 +110,8 @@ public class BinaryTree implements BinaryTreeable{
     private void addNodeToTree(Node node, int number) {
         if(node == null) {
             rootNode = new Node(number);
-            node = rootNode;
+            return;
         }
-
-        if(number == node.getValue()) return;
 
         if(number <= node.getValue()) {
             if(node.isLeftChildEmpty()) {

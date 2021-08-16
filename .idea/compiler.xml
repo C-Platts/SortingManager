@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="SortingManager" target="14" />
+      <module name="SortingManager" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
