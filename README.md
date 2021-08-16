@@ -13,13 +13,13 @@ The program features six sorting algorithms:
  Each sort has been added to a SortFactory, following the Factory pattern. 
 
 ## TDD
-This project adopted TDD part way through, where unit tests were written before classes were implemented. Following Red-Green-Refactor, tests were written and failed before any 
-code was written; and only the bare minimum amount of code was written to pass the tests.
+This project adopted TDD partway through, where unit tests were written before classes were implemented. Following Red-Green-Refactor, tests were written and failed before any 
+code was written, and only the bare minimum amount of code was written to pass the tests.
 
-Thes testing was used in conjunction with the SortFactory, which allowed the test cases to be reused fro each sort algorithm implementation.
+The testing was used in conjunction with the SortFactory, which allowed the test cases to be reused for each sort algorithm implementation.
 
 ## Binary Tree
-The brinary tree sort uses a binary tree structure which was inplemented in accordance with a given interface contract. A seperate Node class was inplemented, 
+The binary tree sort uses a binary tree structure that was implemented following a given interface contract. A separate Node class was implemented, 
 to adhere to SOLID principles.
 
 ## Maven
